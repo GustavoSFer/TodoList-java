@@ -53,7 +53,18 @@ public class GerenciadorDeTarefas {
 
     if (!meuArquivo.exists() || !meuArquivo.canRead()) {
       System.out.println("Arquivo não existe ou não pode ser lido!");
+      return;
     }
 
+    try {
+      reader = new FileReader(meuArquivo);
+      buffer = new BufferedReader(reader);
+
+      for (Tarefa t : listaTarefas) {
+        System.out.println("Tarefa -> " + t.getNome());
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
