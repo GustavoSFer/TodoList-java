@@ -8,12 +8,13 @@ import java.util.ArrayList;
 
 public class GerenciadorDeTarefas {
   private final String path = "C:\\contato/listaTarefa.txt";
-  private ArrayList<Tarefa> listaTarefas;
+  private ArrayList<Tarefa> listaTarefas = new ArrayList<Tarefa>();
   private File meuArquivo = new File(path);
 
-  public void novaTarefa(String tarefa) {
+  public void novaTarefa(String tarefa) throws IOException {
     Tarefa fazer = new Tarefa(tarefa);
     listaTarefas.add(fazer);
+    salvarTarefaNoArquivo();
   }
 
   private void salvarTarefaNoArquivo() throws IOException {
@@ -28,9 +29,9 @@ public class GerenciadorDeTarefas {
       e.printStackTrace();
     }
 
+    write = new FileWriter(meuArquivo);
+    buffer = new BufferedWriter(write);
     try {
-      write = new FileWriter(meuArquivo);
-      buffer = new BufferedWriter(write);
       for (Tarefa t : listaTarefas) {
         buffer.write(t.getNome());
         buffer.flush();
@@ -39,8 +40,8 @@ public class GerenciadorDeTarefas {
     } catch (IOException e) {
       e.printStackTrace();
     } finally {
-      write.close();
       buffer.close();
+      write.close();
     }
   }
 }
