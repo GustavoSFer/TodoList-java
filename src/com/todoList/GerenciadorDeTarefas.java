@@ -1,7 +1,9 @@
 package com.todoList;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,5 +45,15 @@ public class GerenciadorDeTarefas {
       buffer.close();
       write.close();
     }
+  }
+
+  public void listarTarefas() {
+    FileReader reader = null;
+    BufferedReader buffer = null;
+
+    if (!meuArquivo.exists() || !meuArquivo.canRead()) {
+      System.out.println("Arquivo não existe ou não pode ser lido!");
+    }
+
   }
 }
