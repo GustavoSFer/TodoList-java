@@ -60,8 +60,11 @@ public class GerenciadorDeTarefas {
       reader = new FileReader(meuArquivo);
       buffer = new BufferedReader(reader);
 
-      for (Tarefa t : listaTarefas) {
-        System.out.println("Tarefa -> " + t.getNome());
+      String conteudoLinha = buffer.readLine();
+
+      while (conteudoLinha != null) {
+        System.out.println("Tarefa -> " + conteudoLinha);
+        conteudoLinha = buffer.readLine();
       }
     } catch (IOException e) {
       e.printStackTrace();

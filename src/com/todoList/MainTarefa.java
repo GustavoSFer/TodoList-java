@@ -14,14 +14,27 @@ public class MainTarefa {
     while (opcao != 3) {
       System.out.println("Esolha a opção desejada: ");
       System.out
-          .println("1- Cadastrar nova tarefa\n2- Listar todas as tarefas\3- Sair do programa");
+          .println("1- Cadastrar nova tarefa\n2- Listar todas as tarefas\n3- Sair do programa");
+      opcao = Integer.parseInt(scanner.nextLine());
 
+      switch (opcao) {
+        case 1:
+          System.out.println("Informa o nome da tarefa:");
+          String tarefa = scanner.nextLine();
+          minhaTarefa.novaTarefa(tarefa);
+          break;
+        case 2:
+          minhaTarefa.listarTarefas();
+          System.out.println();
+          break;
+        case 3:
+          System.out.println("\n     ==============    ");
+          System.out.println("Tchau!!! Até a proxima.\nNão se esqueça de fazer suas tarefas!!");
+          break;
+        default:
+          System.out.println("Escolha uma opção valida!");
+      }
     }
-
-    minhaTarefa.novaTarefa("Verificar se salvou no arquivo");
-    minhaTarefa.novaTarefa("Verificar se salvou no arquivo2");
-
-    minhaTarefa.listarTarefas();
   }
 
 }
